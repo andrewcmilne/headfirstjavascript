@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    
+    <script>
+       var passengers = [ {name: "Jane", paid: true},
+       {name: "Dr. Evel", paid: true}, {name: "John", paid: true}, {name: "sue", paid: false}];
+       
+       function processPassengers(passengers, testFunction){
+        for (var i = 0; i<passengers.length; i++){
+            if (testFunction(passengers[i])){
+            return false;
+            }
+        }
+       return true;
+       }
+       function checkNotPaid(passenger){
+        return (!passenger.paid);
+       }
+       
+       function checkNoFly (passenger){
+        return (passenger.name === "Dr. Evel");
+       
+       }
+       
+       var allCanFly = processPassengers(passengers, checkNoFly);
+       if (!allCanFly){
+            console.log("The plane can't take off");
+       }
+       
+       var allPaid = processPassengers(passengers, checkNotPaid);
+       if (!allPaid){
+            console.log("the plane can't take off: not everyone has paid");
+       }
+        
+        function printPassenger(passenger){
+            if(passenger.paid){
+                console.log(passenger.name + "  has paid");
+                
+            }else{
+                console.log(passenger.name + " hasn't paid");
+            }
+                
+            
+        }
+        
+        processPassengers(passengers, printPassenger);
+    </script>
+    
+    
+    
+    
+</head>
+<body>
+   
+    
+</body>
+</html>
